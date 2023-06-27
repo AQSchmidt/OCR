@@ -3,6 +3,7 @@ import numpy as np
 import pdf2image
 import pytesseract
 from tkinter import Tk, filedialog
+import subprocess
 
 def convert_pdf_to_img(file_obj, dpi):
         try:
@@ -27,6 +28,9 @@ def process_file(file_path):
         for line in lines:
             f.write(line + '\n')
     print(f'Content extracted and saved to {output_file}')
+
+    # Open the processed file using the default system application
+    subprocess.run(['xdg-open', output_file])
             
 def select_file():
     root = Tk()
